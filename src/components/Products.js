@@ -1,18 +1,27 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect} from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import { getProducts } from '../redux/apiCalls';
 import Product from './Product';
 
 
 const Products = () => {
 
-  const [products, setProducts] = useState([]);
 
+  const dispatch = useDispatch()
+  const products = useSelector(state=>state.product.products)
   useEffect(() => {
-    fetch('https://e-com-server-side.herokuapp.com/api/products/find')
-    .then(res=>res.json())
-      .then(products => {
-        setProducts(products)
-    })
-  },[])
+    getProducts(dispatch)
+  }, [dispatch])
+
+  // const [products, setProducts] = useState([]);
+
+  // useEffect(() => {
+  //   fetch('https://e-com-server-side.herokuapp.com/api/products/find')
+  //   .then(res=>res.json())
+  //     .then(products => {
+  //       setProducts(products)
+  //   })
+  // },[])
 
   return (
     <div className="container mx-auto pb-24">

@@ -34,7 +34,7 @@ const Cart = () => {
        
     // Checking if there is any object in products
     // which contains the key value
-     if(products.some((val)=>{ return val["productId"] == x[key] })){
+     if(products.some((val)=>{ return val["productId"] === x[key] })){
          
        // If yes! then increase the occurrence by 1
        products.forEach((k)=>{

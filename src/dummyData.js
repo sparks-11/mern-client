@@ -241,3 +241,11 @@ export const ProductData = {
     },
   ],
 };
+
+const user = useSelector(state=>state.user.currentUser)
+const dispatch = useDispatch()
+const order = useSelector(state => state.order.orders)
+  
+useEffect(() => {
+  getOrders(user._id,dispatch)
+},[user._id,dispatch])

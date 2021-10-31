@@ -1,10 +1,11 @@
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { getOrders } from '../redux/apiCalls'
-import {format} from "timeago.js" 
+import React, { useEffect} from 'react'
+import { DataGrid } from "@material-ui/data-grid";
+import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { getOrders } from '../redux/apiCalls';
+import { format } from "timeago.js"
 
 const Order = () => {
-
 
 const user = useSelector(state=>state.user.currentUser)
 const dispatch = useDispatch()
@@ -12,42 +13,77 @@ const order = useSelector(state => state.order.orders)
   
 useEffect(() => {
   getOrders(user._id,dispatch)
-},[dispatch])
+},[user._id,dispatch])
+
+
+const columns = [
+  { field: '_id', headerName: 'ORDER_ID', width: 200 },
+  {
+    field: 'Orders',
+    headerName: 'User_Id',
+    width: 200,
+    renderCell: (params) => {
+      return (
+        <div className="flex items-center gap-3 text-md font-medium">
+          {params.row.userId}
+      </div>
+    )}
+  },
+  { field: 'address', headerName: 'Address', width: 140 },
+  {
+    field: 'orders',
+    headerName: "Date",
+    width: 150,
+    renderCell: (params) => {
+      return (
+        <div>
+          {format(params.row.createdAt)}
+        </div>
+      )}
+  },
+  {
+    field: 'status',
+    headerName: 'Status',
+    width: 150,
+  },
+  {
+    field: 'amount',
+    headerName: 'Amount',
+    width: 150,
+  },
+  {
+    field: 'action',
+    headerName: 'action',
+    width: 120,
+    renderCell : (params)=> {
+      return (
+          <div className="flex items-center gap-8">
+            <Link to={"orders/" + params.row._id}>
+            <button className="flex items-center bg-green-300 shadow-sm hover:shadow-md  p-2 rounded-lg">
+                <img className="h-5" src="/images/icons8_eye.ico"alt="view" />
+          </button>
+          </Link>
+          </div>
+      )}
+  },
+];
 
   return (
-  
-    <>
-        {order.map((item) => (
-            
-        <div className="flex items-center justify-around pb-2 text-left bg-red-300" key={item._id}>
-            <div className="flex items-center">
-              <div  className="w-20 overflow-hidden text-left">
-                {item.products.map((el) => {
-                  <div className="flex flex-col">
-                    return (
-                    <div className="flex items-center justify-between">
-                      <h3>{el.productId}</h3>
-                      <h3>{el.quantity}</h3>
-                    </div>)
-                  </div>
-                    })}
-              </div>
-          </div>
-          <div>
-                <h3>{format( item.createdAt)}</h3>
-          </div>
-          <div>
-                <h3>{item.amount}</h3>
-          </div>
-          <div>
-          <button className="bg-gray-300 font-semibold shadow-sm hover:shadow-md p-2 rounded-lg">{item.status}
-          </button>
-          </div>
-        </div>
-          ))
-        }
-    </>
+    <div className="top-20 mx-20 z-30">
+      <h1 className="text-3xl font-bold my-5 px-5">Orders</h1>
+      <div className="w-full px-4" style={{height:"550px"}}>
+        <DataGrid
+          rows={order}
+          columns={columns}
+          pageSize={8}
+          getRowId={(row)=>row._id}
+          rowsPerPageOptions={[5]}
+          disableSelectionOnClick
+          checkboxSelection
+        />
+      </div>
+    </div>
   )
 }
 
-export default Order
+export default Order;

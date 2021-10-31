@@ -39,10 +39,9 @@ const SingleProduct = () => {
           <div className="text-md">{product.size}</div>
           <div className="font-bold mt-2">$ {product.price}</div>
           <button
-            className="bg-deep-blue text-gray-custom rounded-md py-1 px-4 mt-4"
               disabled={isAdding}
               onClick={(e)=>{addToCart(e,product)}}
-              className={`${isAdding ? "bg-green-500" : "bg-deep-blue"} px-4 py-1 font-bold  text-gray-custom rounded-md`}
+              className={`${isAdding ? "bg-green-500" : "bg-deep-blue"} mt-4 px-4 py-1 font-bold  text-gray-custom rounded-md`}
           >add{isAdding ? "ed" : ''} to Cart</button>
 
         </div>

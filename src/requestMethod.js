@@ -13,7 +13,7 @@ const TOKEN = fetchToken()
   
   // "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxN2FhYWMyZDZmOGYzMTNjZjNhMjllOSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTYzNTU3OTI5MiwiZXhwIjoxNjM1ODM4NDkyfQ.TJMrLJr6IsgJq13fxoaiZPVAj3H0ptlZ-J4X-wRjCAw"
 
-console.log(TOKEN)
+
 export const publicRequest = axios.create({
   baseURL: BASE_URL,
 });

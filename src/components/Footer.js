@@ -9,7 +9,6 @@ const Footer = () => {
         <div className="flex items-center justify-center pt-7">
           <h2 className="mr-12">dummy@gmail.com</h2>
           <h2>+91 9946751357</h2>
-          <h2></h2>
         </div>
         <div className=" font-light pt-6">
             <h4>Copyrights &copy; 2021 @ sparks</h4>

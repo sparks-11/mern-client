@@ -57,7 +57,7 @@ const userSlice = createSlice({
     },
     updateUserSuccess: (state, action) => {
       state.isFetching = false;
-      state.user.currentUser = action.payload.user;
+      state.currentUser = action.payload;
     },
     updateUserFailure: (state) => {
       state.isFetching = false;

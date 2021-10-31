@@ -25,7 +25,6 @@ const Navigation = () => {
     logout(dispatch)
   }
 
-  console.log(isUser[0])
   return (
     <>
 
@@ -40,10 +39,10 @@ const Navigation = () => {
           </Link>
           <ul className="flex items-center">
             <li><Link to="/">Home</Link></li>
-          <li className="ml-6">{isUser[0] ? <h2 onClick={logOut}>Logout</h2> : <Link to="/login">Login</Link>  }</li>
+          <li className="ml-6 cursor-pointer">{isUser[0] ? <h2 onClick={logOut}>Logout</h2> : <Link to="/login">Login</Link>  }</li>
             <li className="ml-6"><Link to="/products">Products</Link></li>
             <li className="ml-6"><Link to="/orders">Orders</Link></li>
-            {/* <li className="ml-6"><Link to="/settings">Setting</Link></li> */}
+            <li className="ml-6"><Link to="/settings">Setting</Link></li>
             <li className="ml-6">
               <Link to="/cart">
                 <div style={cartStyle}>

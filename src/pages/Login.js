@@ -42,12 +42,12 @@ const Login = () => {
 				<input type="hidden" name="remember" value="true"/>
 				<div className="rounded-md shadow-sm -space-y-px">
 					<div>
-						<label for="email-address" className="sr-only">Email address</label>
+						<label htmlFor="email-address" className="sr-only">Email address</label>
 							<input
 								id="email-address"
 								name="email"
 								type="email"
-								autocomplete="email"
+								autoComplete="email"
 								required
 								onChange={(e)=>{setEmail(e.target.value)}}
 								value={email}
@@ -56,11 +56,11 @@ const Login = () => {
 							/>
 					</div>
 					<div>
-						<label for="password" className="sr-only">Password</label>
+						<label htmlFor="password" className="sr-only">Password</label>
 							<input
 								id="password"
 								name="password"
-								type="password" autocomplete="current-password" required
+								type="password" autoComplete="current-password" required
 								value={password}
 								onChange={(e)=>{setPassword(e.target.value)}}
 								className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
@@ -72,7 +72,7 @@ const Login = () => {
 				<div className="flex items-center justify-between">
 					<div className="flex items-center">
 						<input id="remember_me" name="remember_me" type="checkbox" className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"/>
-						<label for="remember_me" className="ml-2 block text-sm text-gray-900">
+						<label htmlFor="remember_me" className="ml-2 block text-sm text-gray-900">
 							Remember me
 						</label>
 					</div>

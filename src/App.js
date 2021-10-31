@@ -11,6 +11,7 @@ import Login from './pages/Login';
 import Footer from './components/Footer';
 import { useSelector } from 'react-redux';
 import Settings from './pages/Settings';
+import SingleOrder from './pages/SingleOrder';
 
 const App = () => {
   const user =useSelector(state=>state.user.currentUser)
@@ -21,11 +22,12 @@ const App = () => {
 
       <Switch>
           <Route path="/" exact component={Home}></Route>
-          <Route path="/products" exact component={ProductsPage}></Route>
+          <Route exact path="/products" component={ProductsPage}></Route>
           <Route path="/products/:_id" component={SingleProduct}></Route>
           <Route path="/cart" component={Cart}></Route>
-          <Route path="/orders"  component={Order}></Route>
-          {/* <Route path="/settings"  component={Settings}></Route> */}
+          <Route exact path="/orders"  component={Order}></Route>
+          <Route path="/orders/:orderId"  component={SingleOrder}></Route>
+          <Route path="/settings"  component={Settings}></Route>
           <Route path="/login" >{ user ? <Redirect to="/"/>: <Login/>}</Route>
         <Route path="/register" >{user ? <Redirect to="/" /> : <Register />}</Route>
     
